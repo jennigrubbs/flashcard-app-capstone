@@ -10,6 +10,8 @@ import AddCard from "./AddCard"
 import EditCard from "./EditCard"
 import EditDeck from "./EditDeck"
 
+// set up all the routes
+// when paths are similar either use exact path or put the longer one higher up
 function Layout() {
   return (
     <div className="Layout">

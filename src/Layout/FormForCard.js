@@ -4,6 +4,7 @@ function FormForCard({submitFormHandler, cancelButtonHandler, card}) {
     const [front, setFront] = useState('')
     const [back, setBack] = useState('')
 
+// set up useEffect for the card
     useEffect(() => {
         if (card) {
             setFront(card.front)
@@ -11,11 +12,13 @@ function FormForCard({submitFormHandler, cancelButtonHandler, card}) {
         }
     }, [card])
 
+// need to prevent default action for submit
     const internalSubmit = event => {
         event.preventDefault()
         submitFormHandler({front, back})
     }
 
+// set up the form, use ternaries for dealing with buttons that have to have labels worded one way in AddCard and another in EditCard
     return (
         <form onSubmit={internalSubmit}>
             <div>

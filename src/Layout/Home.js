@@ -1,26 +1,12 @@
-/* Shows a list of decks with options to create, study, view, or delete a deck */
-
-/* The Home screen has the following features:
-x •	The path to this screen should be /.
-x & ? •	A Create Deck button is shown, and clicking it brings the user to 
-the Create Deck screen.
-•	Existing decks are each shown with the deck name, the number of cards, 
-and a Study, View, and Delete button. 
--- Still need to style the delete button better and show the word Delete
-x	Clicking the Study button brings the user to the Study screen.
-x	Clicking the View button brings the user to the Deck screen.
-x •	Clicking the Delete button shows a warning message before deleting the deck.
-*/
-
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { listDecks, deleteDeck } from "../utils/api/index";
-// import CreateDeck from "./CreateDeck" - may not need this
 
 function Home() {
     const [decks, setDecks] = useState([]);
     const history = useHistory();
 
+// set up useEffect for getting the decks for home screen
     useEffect(() => {
         async function getDeck() {
             const response = await listDecks();
@@ -29,7 +15,7 @@ function Home() {
         getDeck();
     }, []);
     
-
+// set up the delete button handler with dialog pop up
     function deleteButtonHandler(deckId) {
         if (
           window.confirm(
@@ -41,6 +27,7 @@ function Home() {
         }
       }
 
+// set up decks with links and buttons
     return (
         <div >
         <div>           
@@ -77,3 +64,18 @@ function Home() {
 }
 
 export default Home
+
+/* Shows a list of decks with options to create, study, view, or delete a deck */
+/* The Home screen has the following features:
+x •	The path to this screen should be /.
+x & ? •	A Create Deck button is shown, and clicking it brings the user to 
+the Create Deck screen.
+x	Existing decks are each shown with the deck name, the number of cards, 
+and a Study, View, and Delete button. 
+-- Still need to style the delete button better and show the word Delete
+x	Clicking the Study button brings the user to the Study screen.
+x	Clicking the View button brings the user to the Deck screen.
+x •	Clicking the Delete button shows a warning message before deleting the deck.
+*/
+
+

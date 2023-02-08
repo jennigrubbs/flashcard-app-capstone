@@ -1,22 +1,3 @@
-/* Edit Card - path:	/decks/:deckId/cards/:cardId/edit	
-Allows the user to modify information on an existing card
-*/
-/*
-The Edit Card screen has the following features:
-x	The path to this screen should include the deckId and the cardId 
-(i.e., /decks/:deckId/cards/:cardId/edit). -- set this as exact path
-x	You must use the readDeck() function from src/utils/api/index.js 
-to load the deck that contains the card to be edited. Additionally, 
-you must use the readCard() function from src/utils/api/index.js 
-to load the card that you want to edit.
-•	There is a breadcrumb navigation bar with a link to home /, 
-followed by the name of the deck of which the edited card is a member, 
-and finally the text Edit Card :cardId (e.g., Home/Deck React Router/Edit Card 4).
-•	It displays the same form as the Add Card screen, except it is prefilled 
-with information for the existing card. It can be edited and updated.
-•	If the user clicks on either Save or Cancel, the user is taken to the Deck screen.
-*/
-
 import React, { useState, useEffect } from "react"
 import { Link, useHistory, useParams } from "react-router-dom"
 import { readCard, readDeck, updateCard } from "../utils/api/index"
@@ -56,7 +37,6 @@ function EditCard() {
     }
 
 // set up submit button handler
-// make sure to stop default activity
 // use updateCard() from utils>api>index.js
     const submitButtonHandler = async ({front, back}) => {
         await updateCard({...card, front, back})
@@ -94,3 +74,19 @@ function EditCard() {
 }
 
 export default EditCard
+
+/* Edit Card - path:	/decks/:deckId/cards/:cardId/edit	
+Allows the user to modify information on an existing card
+*/
+/*
+The Edit Card screen has the following features:
+x	The path to this screen should include the deckId and the cardId 
+(i.e., /decks/:deckId/cards/:cardId/edit). -- set this as exact path
+x	You must use the readDeck() function from src/utils/api/index.js 
+to load the deck that contains the card to be edited. Additionally, 
+you must use the readCard() function from src/utils/api/index.js 
+to load the card that you want to edit.
+x	There is a breadcrumb navigation bar with a link to home /, followed by the name of the deck of which the edited card is a member, and finally the text Edit Card :cardId (e.g., Home/Deck React Router/Edit Card 4).
+x	It displays the same form as the Add Card screen, except it is prefilled with information for the existing card. It can be edited and updated.
+x	If the user clicks on either Save or Cancel, the user is taken to the Deck screen.
+*/

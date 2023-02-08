@@ -1,35 +1,6 @@
-/* Study - path: /decks/:deckId/study	
-Allows the user to study the cards from a specified deck
-*/
-/* Clicking the Study button on the home page brings the user to the Study screen. */
-/* 
-The Study screen has the following features:
-x x	The path to this screen should include the deckId (i.e., /decks/:deckId/study).
-x	You must use the readDeck() function from src/utils/api/index.js to load the deck 
-that is being studied.
-x	There is a breadcrumb navigation bar with links to home /, 
-followed by the name of the deck being studied, and finally the text Study 
-(e.g., Home/Rendering In React/Study).
-x	The deck title (i.e., "Study: Rendering in React" ) is shown on the screen.
-x	Cards are shown one at a time, front-side first.
-x	A button at the bottom of each card "flips" it to the other side.
-x	After flipping the card, the screen shows a Next button 
-(see the Next button section below) to continue to the next card.
-x	After the final card in the deck has been shown, a message 
-(see the Restart prompt section below) is shown offering the user 
-the opportunity to restart the deck.
-x	If the user does not restart the deck, they should return to the home screen.
-x	Studying a deck with two or fewer cards should display a 
-"Not enough cards" message (see the "Not enough cards" section below) 
-and a button to add cards to the deck.
-Next button
-x The Next button appears after the card is flipped.
-*/
-
 import React, { useState, useEffect} from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
-import Home from "./Home" // may not need this
 
 // need lots of constants declared
 function Study() {
@@ -65,7 +36,8 @@ function Study() {
     const nextButtonHandler = (event) => {
         setCardIndexNumber(cardIndexNumber + 1)
         console.log(cardsLength, cardIndexNumber)
-// set it for restarting the deck on clicking OK or returning to the home page on clicking Cancel
+
+      // set it for restarting the deck on clicking OK or returning to the home page on clicking Cancel
         if (cardIndexNumber === cardsLength - 1) {
             if (
                 window.confirm("Restart cards? Click 'cancel' to return to the home page.")
@@ -81,6 +53,7 @@ function Study() {
         setCardFrontSide(true)
     }
 }
+
 // get the breadcrumbs navigation set for not enough cards in deck and Add Card button
     if (cardsLength <= 2) {
         return (
@@ -111,6 +84,7 @@ function Study() {
             </div>
         )
     }
+
 // get the breadcrumbs navigation set for flipping through cards
     return (
         <div>
@@ -150,3 +124,31 @@ function Study() {
     )
 }
 export default Study
+
+/* Study - path: /decks/:deckId/study	
+Allows the user to study the cards from a specified deck
+*/
+/* Clicking the Study button on the home page brings the user to the Study screen. */
+/* 
+The Study screen has the following features:
+x x	The path to this screen should include the deckId (i.e., /decks/:deckId/study).
+x	You must use the readDeck() function from src/utils/api/index.js to load the deck 
+that is being studied.
+x	There is a breadcrumb navigation bar with links to home /, 
+followed by the name of the deck being studied, and finally the text Study 
+(e.g., Home/Rendering In React/Study).
+x	The deck title (i.e., "Study: Rendering in React" ) is shown on the screen.
+x	Cards are shown one at a time, front-side first.
+x	A button at the bottom of each card "flips" it to the other side.
+x	After flipping the card, the screen shows a Next button 
+(see the Next button section below) to continue to the next card.
+x	After the final card in the deck has been shown, a message 
+(see the Restart prompt section below) is shown offering the user 
+the opportunity to restart the deck.
+x	If the user does not restart the deck, they should return to the home screen.
+x	Studying a deck with two or fewer cards should display a 
+"Not enough cards" message (see the "Not enough cards" section below) 
+and a button to add cards to the deck.
+Next button
+x The Next button appears after the card is flipped.
+*/
