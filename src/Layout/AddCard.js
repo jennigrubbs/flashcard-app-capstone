@@ -69,6 +69,7 @@ function AddCard() {
                 cancelButtonHandler={cancelButtonHandler}
                 inputChangeHandler={inputChangeHandler}
                 card={card}
+                type="add"
             />
         </div>
     )

@@ -77,6 +77,7 @@ function EditCard() {
                 submitFormHandler={submitButtonHandler}
                 cancelButtonHandler={cancelButtonHandler}
                 card={card}
+                type="edit"
             />
         </div>
     )

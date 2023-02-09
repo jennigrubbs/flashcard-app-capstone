@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"
 
-function FormForCard({inputChangeHandler, submitFormHandler, cancelButtonHandler, card}) {
+function FormForCard({type, inputChangeHandler, submitFormHandler, cancelButtonHandler, card}) {
 // set up the form, use ternaries for dealing with buttons that have to have labels worded one way in AddCard and another in EditCard
     return (
         <form onSubmit={submitFormHandler}>
@@ -29,7 +29,7 @@ function FormForCard({inputChangeHandler, submitFormHandler, cancelButtonHandler
                 </div>
             </div>
             <div className="mt-2">
-                {!!card ? (
+                {type === 'edit' ? (
                     <>
                         <button className="btn btn-secondary text-white" type="button" onClick={cancelButtonHandler}>Cancel</button>
                         <button className="btn btn-primary ml-2 text-white" type="submit">Save</button>
