@@ -38,7 +38,7 @@ function Home() {
         <div>
           {decks?.map((deck)=>
             <div className="d-grid gap-2 d-md-block mt-2 mb-4" key={deck.id}> 
-              <div className="card w-75">
+              <div className="card">
                 <div className="card-header bg-light">
                   <h5 className="float-left">{deck.name}</h5>
                     <p className="float-right">{deck.cards.length} cards</p>

@@ -24,7 +24,7 @@ function CreateDeck() {
         event.preventDefault()
         const response = await createDeck({name, description})
         await readDeck(response.id)
-        history.go(`/decks/${response.id}`)
+        history.push(`/`)
     }
 
 // set up breadcrumbs nav, then set up the submit handler for the form

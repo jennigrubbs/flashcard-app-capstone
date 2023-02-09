@@ -110,14 +110,14 @@ function Study() {
             <div>
                 <h1>Study: {deck.name}</h1>
             </div>
-            <div className="card float-center d-grid gap-2 d-md-block mt-2 mb-4" style={{ width: '30rem' }}>
+            <div className="card float-center d-grid gap-2 d-md-block mt-2 mb-4">
                 <div className="card-body">
                     <h2>Card {cardIndexNumber+1} of {cardsLength}</h2>
                     <div>
                         {cardFrontSide ? <p>{cards[cardIndexNumber]?.front}</p> : <p>{cards[cardIndexNumber]?.back}</p>}
                     </div>
                     <button className="btn btn-secondary" type="button" onClick={flipButtonHandler}>Flip</button>
-                    {cardFrontSide ? <p></p> : <button className="btn btn-primary" type="button" onClick={nextButtonHandler}>Next</button>}
+                    {cardFrontSide ? <p></p> : <button className="btn btn-primary ml-2" type="button" onClick={nextButtonHandler}>Next</button>}
                 </div>
             </div>
         </div>

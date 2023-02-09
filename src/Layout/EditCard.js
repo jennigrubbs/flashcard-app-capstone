@@ -5,7 +5,7 @@ import FormForCard from "./FormForCard"
 
 function EditCard() {
     const history = useHistory()
-    const [card, setCard] = useState()
+    const [card, setCard] = useState({})
     const [deck, setDeck] = useState({})
     const {deckId, cardId} = useParams()
 
@@ -38,10 +38,18 @@ function EditCard() {
 
 // set up submit button handler
 // use updateCard() from utils>api>index.js
-    const submitButtonHandler = async ({front, back}) => {
-        await updateCard({...card, front, back})
+    const submitButtonHandler = async (event) => {
+        event.preventDefault()
+        await updateCard({...card})
         history.push(`/decks/${deckId}`)
     }
+
+    const inputChangeHandler = (event) => {
+        setCard({
+            ...card,
+            [event.target.name]: event.target.value
+        })
+    } 
 
 // set up breadcrumb nav, display form prefilled with data that can be edited and updated
     return (
@@ -65,6 +73,7 @@ function EditCard() {
             </nav>
             <h2>Edit Card</h2>
             <FormForCard
+                inputChangeHandler={inputChangeHandler}
                 submitFormHandler={submitButtonHandler}
                 cancelButtonHandler={cancelButtonHandler}
                 card={card}

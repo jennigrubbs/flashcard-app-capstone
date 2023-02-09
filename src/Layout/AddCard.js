@@ -5,6 +5,7 @@ import FormForCard from "./FormForCard"
 
 function AddCard() {
     const [deck, setDeck] = useState({})
+    const [card, setCard] = useState({front: "", back: ""})
     const history = useHistory()
     const {deckId} = useParams()
 
@@ -27,12 +28,20 @@ function AddCard() {
 // make sure to stop the default activity
 // use the createCard() helper function from utils>api>index.js
 // use the readDeck() helper function from utils>api>index.js
-    const submitFormHandler = async ({front, back}) => {
-        const response = await createCard(deckId, {front, back})
+    const submitFormHandler = async (event) => {
+        event.preventDefault()
+        const response = await createCard(deckId, {front: card.front, back: card.back})
         // console.log(response)
         await readDeck(response.deckId)
         history.go(0)
     }
+
+    const inputChangeHandler = (event) => {
+        setCard({
+            ...card,
+            [event.target.name]: event.target.value
+        })
+    } 
 
 // add breadcrumbs nav, formForCard component
     return (
@@ -58,6 +67,8 @@ function AddCard() {
             <FormForCard
                 submitFormHandler={submitFormHandler}
                 cancelButtonHandler={cancelButtonHandler}
+                inputChangeHandler={inputChangeHandler}
+                card={card}
             />
         </div>
     )

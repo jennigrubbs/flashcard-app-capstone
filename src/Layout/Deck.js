@@ -76,7 +76,7 @@ function Deck() {
         </div>
             <h2>Cards</h2>
             {deck.cards?.map((card) => (
-                <div className="card float-center d-grid gap-2 d-md-block mt-2 mb-4" style={{ width: '30rem' }} key={card.id}>
+                <div className="card float-center d-grid gap-2 d-md-block mt-2 mb-4" key={card.id}>
                     <div className="container">
                         <div className="row pb-2 pt-2">
                             <div className="col">
